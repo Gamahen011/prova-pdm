@@ -6,26 +6,28 @@ import { IonicModule } from '@ionic/angular';
 import { Produto } from '../models/produto';
 import { AuthService } from '../services/authService';
 import { produtoService } from '../services/produtoService';
+import { ProdutoCardComponent } from '../components/produto-card/produto-card.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, ProdutoCardComponent],
 })
 export class HomePage implements OnInit {
 
   produtos: Produto[] = [];
   textoNovo = '';
   mensagemErro = '';
-  carrinho: Produto[] = [];
 
   constructor(
     public auth: AuthService,
-    private produtoService: produtoService,
+    public produtoService: produtoService,
     private router: Router,
-  ) {}
+  ) {
+    this.produtos = this.produtoService.produtos
+  }
 
   async ngOnInit() {
     const usuario = await this.auth.esperarUsuario();
@@ -35,17 +37,9 @@ export class HomePage implements OnInit {
     }
   }
 
-  onProdutoSelecionado(evento: {id?: number}) {
-    const id = evento.id;
-    let produtoSelecionado = this.produtos.find(p => p.id === id);
-    if (id) {
-      this.carrinho.push(produtoSelecionado!);
-    }
-}
-  async carregar() {
-     // this.produtos = await this.produtoService.listar();
+  comanda() {
+    this.router.navigate(['/comanda'])
   }
-
 
 
   async sair() {

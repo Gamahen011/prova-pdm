@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Bar do Joaquim</ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/comanda">Comanda</ion-button>
+      <ion-button (click)="comanda()">Comanda</ion-button>
       <ion-button (click)="sair()">Sair</ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -22,10 +22,9 @@
 </div>
 
 
-  <div *ngFor="let produto of listaprodutos">
+  <div *ngFor="let produto of produtos">
     <app-produto-card
-    [produto]="produto"
-    (selecionado)="onProdutoSelecionado($event)"></app-produto-card>
+    [produto]="produto"></app-produto-card>
   </div>
 
 </ion-content>

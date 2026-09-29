@@ -5,4 +5,5 @@ export interface Produto {
   doce: boolean;
   esgotado: boolean;
   ultimasunidades: boolean;
+  quantidade: number;
 }

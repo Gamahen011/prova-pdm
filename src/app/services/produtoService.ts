@@ -16,10 +16,27 @@ import { Produto } from '../models/produto';
 export class produtoService {
 
   produtos:  Produto[] = [
-    { id: 1, nome: 'Porção de batata', preco: 35, doce: false, esgotado: false, ultimasunidades: false },
-    { id: 2, nome: 'Brigadeiro', preco: 20, doce: true, esgotado: false, ultimasunidades: false },
-    { id: 3, nome: 'Pudim de leite', preco: 15, doce: true, esgotado: false, ultimasunidades: false }  
-  ];
+    { id: 1, nome: 'Porção de batata', preco: 35, doce: false, esgotado: false, ultimasunidades: false, quantidade: 0 },
+    { id: 2, nome: 'Brigadeiro', preco: 20, doce: true, esgotado: false, ultimasunidades: false, quantidade: 0 },
+    { id: 3, nome: 'Pudim de leite', preco: 15, doce: true, esgotado: false, ultimasunidades: false, quantidade: 0 },
+    {
+    id: 4,
+    nome: "Queijo mussarela",
+    preco: 32.5,
+    doce: false,
+    esgotado: true,
+    ultimasunidades: false, quantidade: 0
+  },
+  {
+    id: 5,
+    nome: "Torta gourmet",
+    preco: 12.0,
+    doce: true,
+    esgotado: false,
+    ultimasunidades: true, quantidade: 0
+  }
+];
+
 
 
 
