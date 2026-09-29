@@ -1,0 +1,12 @@
+<ion-card *ngIf="produto" (click)="selecionarProduto()">
+      <ion-card-header>
+        <span> <b>{{ produto.nome}}</b> </span>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Preço:  {{ produto.preco | currency:'BRL' }}</p>
+        <p *ngIf="produto.doce">Doce</p>
+        <p *ngIf="produto.esgotado">Esgotado</p>
+        <p *ngIf="produto.ultimasunidades">Últimas unidades</p>
+      </ion-card-content>
+      <ion-button (click)="aoClicar('colocarComanda')">Colocar na Comanda</ion-button>
+    </ion-card>

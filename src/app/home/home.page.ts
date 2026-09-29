@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   produtos: Produto[] = [];
   textoNovo = '';
   mensagemErro = '';
+  carrinho: Produto[] = [];
 
   constructor(
     public auth: AuthService,
@@ -34,6 +35,13 @@ export class HomePage implements OnInit {
     }
   }
 
+  onProdutoSelecionado(evento: {id?: number}) {
+    const id = evento.id;
+    let produtoSelecionado = this.produtos.find(p => p.id === id);
+    if (id) {
+      this.carrinho.push(produtoSelecionado!);
+    }
+}
   async carregar() {
      // this.produtos = await this.produtoService.listar();
   }

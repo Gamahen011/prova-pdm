@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Mural</ion-title>
+    <ion-title>Bar do Joaquim</ion-title>
     <ion-buttons slot="end">
+      <ion-button routerLink="/comanda">Comanda</ion-button>
       <ion-button (click)="sair()">Sair</ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -15,31 +16,16 @@
     [src]="auth.usuario.photoURL"
     alt="Foto do perfil">
   <span>
-    Conectado como
+    Olá, 
     <strong>{{ auth.usuario.displayName || auth.usuario.email }}</strong>
   </span>
 </div>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Novo produto</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-    
-    </ion-card-content>
-  </ion-card>
 
-
-  <p class="vazio" *ngIf="produtos.length === 0">
-    Nenhum recado ainda. Seja o primeiro a publicar.
-  </p>
-
-  <ion-card *ngFor="let produto of produtos">
-    <ion-card-header>
-      <ion-card-title>{{ produto.nome }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-    </ion-card-content>
-  </ion-card>
+  <div *ngFor="let produto of listaprodutos">
+    <app-produto-card
+    [produto]="produto"
+    (selecionado)="onProdutoSelecionado($event)"></app-produto-card>
+  </div>
 
 </ion-content>
