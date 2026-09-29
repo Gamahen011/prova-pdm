@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mural</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sair()">Sair</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="perfil" *ngIf="auth.usuario">
+  <img
+    *ngIf="auth.usuario.photoURL"
+    [src]="auth.usuario.photoURL"
+    alt="Foto do perfil">
+  <span>
+    Conectado como
+    <strong>{{ auth.usuario.displayName || auth.usuario.email }}</strong>
+  </span>
+</div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Novo produto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    
+    </ion-card-content>
+  </ion-card>
+
+
+  <p class="vazio" *ngIf="produtos.length === 0">
+    Nenhum recado ainda. Seja o primeiro a publicar.
+  </p>
+
+  <ion-card *ngFor="let produto of produtos">
+    <ion-card-header>
+      <ion-card-title>{{ produto.nome }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
